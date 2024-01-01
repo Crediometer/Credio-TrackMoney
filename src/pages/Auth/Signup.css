@@ -1,0 +1,22 @@
+.signup{
+    width: 100%;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+.signup-card{
+    width: 40% !important;
+   
+}
+.progressbar-outer{
+    margin-bottom: 50px;
+}
+.signup-card-inner{
+    height: 80vh !important;
+    overflow-y: scroll !important;
+}
+.signup-button{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}

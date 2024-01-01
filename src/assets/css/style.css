@@ -50,10 +50,10 @@ File: style.css
      Google Font
 ==========================  **/
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600");
-@import url("./assets/plugins/bootstrap/css/bootstrap.min.css");
-@import url("./assets/fonts/feather/css/feather.css");
-@import url("./assets/plugins/jquery-scrollbar/css/jquery.scrollbar.min.css");
-@import url("./assets/fonts/datta/datta-icon.css");
+@import url("../plugins/bootstrap/css/bootstrap.min.css");
+@import url("../fonts/feather/css/feather.css");
+@import url("../plugins/jquery-scrollbar/css/jquery.scrollbar.min.css");
+@import url("../fonts/datta/datta-icon.css");
 /**  =====================
       Custom css start
 ==========================  **/
@@ -3521,23 +3521,23 @@ p.text-muted {
 }
 .lay-customizer .theme-color.navbar-images > a[data-value="navbar-image-1"],
 .theme-color.navbar-images > a[data-value="navbar-image-1"] {
-  /* background-image: url("./assets/images/nav-bg/navbar-img-1.jpg"); */
+  background-image: url("../images/nav-bg/navbar-img-1.jpg");
 }
 .lay-customizer .theme-color.navbar-images > a[data-value="navbar-image-2"],
 .theme-color.navbar-images > a[data-value="navbar-image-2"] {
-  /* background-image: url("../images/nav-bg/navbar-img-2.jpg"); */
+  background-image: url("../images/nav-bg/navbar-img-2.jpg");
 }
 .lay-customizer .theme-color.navbar-images > a[data-value="navbar-image-3"],
 .theme-color.navbar-images > a[data-value="navbar-image-3"] {
-  /* background-image: url("../images/nav-bg/navbar-img-3.jpg"); */
+  background-image: url("../images/nav-bg/navbar-img-3.jpg");
 }
 .lay-customizer .theme-color.navbar-images > a[data-value="navbar-image-4"],
 .theme-color.navbar-images > a[data-value="navbar-image-4"] {
-  /* background-image: url("../images/nav-bg/navbar-img-4.jpg"); */
+  background-image: url("../images/nav-bg/navbar-img-4.jpg");
 }
 .lay-customizer .theme-color.navbar-images > a[data-value="navbar-image-5"],
 .theme-color.navbar-images > a[data-value="navbar-image-5"] {
-  /* background-image: url("../images/nav-bg/navbar-img-5.jpg"); */
+  background-image: url("../images/nav-bg/navbar-img-5.jpg");
 }
 .lay-customizer .theme-color.bg-images > a,
 .theme-color.bg-images > a {
@@ -4955,7 +4955,7 @@ body.box-layout .pcoded-navbar.theme-horizontal ~ .pcoded-header {
   top: 0;
   background: rgba(0, 0, 0, 0.7);
 }
-/* .pcoded-navbar.navbar-image-1 {
+.pcoded-navbar.navbar-image-1 {
   background-image: url("../images/nav-bg/navbar-img-1.jpg");
 }
 .pcoded-navbar.navbar-image-2 {
@@ -4969,7 +4969,7 @@ body.box-layout .pcoded-navbar.theme-horizontal ~ .pcoded-header {
 }
 .pcoded-navbar.navbar-image-5 {
   background-image: url("../images/nav-bg/navbar-img-5.jpg");
-} */
+}
 
 /* ====== [ Menu background images end ] ========== */
 /* ====== [ Menu title color start ] ============== */
@@ -5155,7 +5155,7 @@ body.box-layout .pcoded-navbar.theme-horizontal ~ .pcoded-header {
 .doc-img.navbar-images > a span:before {
   background: transparent;
 }
-/* .doc-img.navbar-images > a[data-value="navbar-image-1"] {
+.doc-img.navbar-images > a[data-value="navbar-image-1"] {
   background-image: url("../images/nav-bg/navbar-img-1.jpg");
 }
 .doc-img.navbar-images > a[data-value="navbar-image-2"] {
@@ -5172,7 +5172,7 @@ body.box-layout .pcoded-navbar.theme-horizontal ~ .pcoded-header {
 }
 .doc-img.navbar-images > a[data-value="navbar-image-6"] {
   background-image: url("../images/nav-bg/navbar-img-6.jpg");
-} */
+}
 
 .nav-link.active.h-blue {
   background: #04a9f5 !important;
@@ -6389,7 +6389,7 @@ body.layout-8 .card:hover {
   transition: all ease-in 0.3s;
 }
 #task-container li.complete:before {
-  /* background: url("../images/complete.png") no-repeat; */
+  background: url("../images/complete.png") no-repeat;
   position: absolute;
   top: 5px;
   right: 5px;
@@ -7510,7 +7510,7 @@ table.footable-paging-center > tfoot > tr.footable-paging > td {
 
 /* image varient start */
 .aut-bg-img {
-  /* background-image: url("../images/bg-images/bg4.jpg"); */
+  background-image: url("../images/bg-images/bg4.jpg");
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
