@@ -23,13 +23,6 @@ const Login = () => {
                             <div class="input-group mb-4">
                                 <input type="password" class="form-control" placeholder="password"></input>
                             </div>
-                            <div class="form-group text-left">
-                                <div class="checkbox checkbox-fill d-inline">
-                                    <input type="checkbox" name="checkbox-fill-1" id="checkbox-fill-a1" checked=""></input>
-                                    <label for="checkbox-fill-a1" class="cr"> Save Details</label>
-                                </div>
-                            </div>
-                          
                             <Link to="/dashboard"><button class="btn btn-primary shadow-2 mb-4">Login</button></Link>
                             <p class="mb-0 text-muted">Don’t have an account? <Link to="/Signup">Signup</Link></p>
                         </div>

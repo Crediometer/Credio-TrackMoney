@@ -1,6 +1,6 @@
 import "./DragandDrop.css"
 import { useState, useRef } from "react";
-const DragandDrop = () => {
+const DragandDrop = ({}) => {
     const [files, setFiles] = useState(null);
     const inputRef = useRef();
 
