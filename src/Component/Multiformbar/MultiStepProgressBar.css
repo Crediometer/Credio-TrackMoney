@@ -194,6 +194,9 @@
     font-size: 2rem;
     color: #2B2B2B;
 }
+.submit-button{
+    width: 100%;
+}
 @media (max-width: 1000px){
     .step-number{
         height: 20px;

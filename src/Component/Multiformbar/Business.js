@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react';
 import { FaTimesCircle } from 'react-icons/fa';
 import {FiAlertTriangle} from 'react-icons/fi'
 import {AiOutlineFile} from 'react-icons/ai'
+import DragandDrop from "../Drag-and-Drop/DragandDrop";
 // import { postbusiness, postkyc } from '../../Redux/Activate/BusinessAction';
 // import LottieAnimation from '../../Lotties';
 // import loader from '../../Assets/loading.json'
@@ -23,6 +24,7 @@ const Business = ({next, business, error, loading,kyc,kycload, kycerror}) => {
     const [postState, setPostState] = useState({});
     const[filename, setFilename] = useState('')
     const [file, setFile] = useState(null);
+    const [file2, setFile2] = useState(null);
     const[image, setImage] = useState(null)
     const[filename2, setFilename2] = useState('')
     const[image2, setImage2] = useState(null)
@@ -145,55 +147,14 @@ const Business = ({next, business, error, loading,kyc,kycload, kycerror}) => {
             </div>
             <div className={styles.form2}>
                <p className='addimage'>Mermat</p>
-               <div className="files">
-                <div className="filedisplay">
-                    {filename2!=''?(
-                        <p className='select-filename'><span onClick={()=>{setFilename2(""); setImage2(null)}}><FaTimesCircle/>Remove File</span>{filename2.name}</p>
-                        ):
-                        <p><AiOutlineFile/> No file chosen</p>
-                    }
-                </div>
-                <div className="filechose" onClick={()=>document.querySelector(".upload").click()}>
-                    <input type="file" className='upload' hidden
-                        onChange={({target: {files}})=>{
-                            files[0] && setFilename2(files[0])
-                            if(files){
-                                setImage2(URL.createObjectURL(files[0]))
-                                // setNameState({ ...nameState, ...{ filename: image } });
-                            }
-                        }}
-                        // onBlur={handlemermat}
-                    ></input>
-                    <p>Choose File</p>
-                </div>
-               </div>
+               <DragandDrop/>
                <p className='warning'><FiAlertTriangle/>Please choose the file under 5KB to upload!</p>
             </div>
-            {/* <div className={styles.form2}>
-               <p className='addimage'>Add image</p>
-               <div className="files">
-                <div className="filedisplay">
-                    {filename!=''?(
-                        <p className='select-filename'><span onClick={()=>{setFilename(""); setImage(null)}}><FaTimesCircle/> Remove File</span>{filename}</p>
-                        ):
-                        <p><AiOutlineFile/> No file chosen</p>
-                    }
-                </div>
-                <div className="filechose" onClick={()=>document.querySelector(".upload").click()}>
-                    <input type="file" className='upload' hidden
-                        onChange={({target: {files}})=>{
-                            files[0] && setFilename(files[0].name)
-                            if(files){
-                                setImage(URL.createObjectURL(files[0]))
-                                // setNameState({ ...nameState, ...{ filename: image } });
-                            }
-                        }}
-                    ></input>
-                    <p>Choose File</p>
-                </div>
-               </div>
+            <div className={styles.form2}>
+               <p className='addimage'>Board Resolution</p>
+               <DragandDrop/>
                <p className='warning'><FiAlertTriangle/>Please choose the file under 5KB to upload!</p>
-            </div> */}
+            </div>
             {/* {show && (
                 <div>
                     {loading ? (
@@ -206,7 +167,7 @@ const Business = ({next, business, error, loading,kyc,kycload, kycerror}) => {
                 </div>
             )} */}
             <div className="signup-button">
-            <button onClick={()=>{next();}} className="btn btn-primary shadow-2 mb-4 text-center"><span>Save</span></button>        
+            <button onClick={()=>{next();}} className="btn btn-primary shadow-2 mb-4 text-center submit-button"><span>Save</span></button>        
             </div>
             
  

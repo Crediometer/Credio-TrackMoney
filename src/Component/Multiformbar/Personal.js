@@ -133,19 +133,6 @@ const Personal = ({next, personal, error, loading}) => {
             </div>
             <div className={styles.form2}>
                 <div className={styles2.field}>
-                    <label className={styles2.fieldlabel}>Support Email</label>
-                    <input 
-                        className={styles2.fieldinput}
-                        type="email"
-                        placeholder="Enter Email" 
-                        onBlur={handleSupportEmail}
-                        onChange={handleSupportEmail}
-                    >
-                    </input>
-                </div>
-            </div>
-            <div className={styles.form2}>
-                <div className={styles2.field}>
                     <label className={styles2.fieldlabel}>Where is your business located *</label>
                     <select 
                         className={styles2.fieldinput}
@@ -173,34 +160,9 @@ const Personal = ({next, personal, error, loading}) => {
                     </input>
                 </div>
             </div>
-            <div className={styles.form2}>
-                <div className={styles2.field}>
-                    <label className={styles2.fieldlabel}></label>
-                    <input 
-                        className={styles2.fieldinput}
-                        type="text"
-                        placeholder="Address Line 2(optional)"
-                        onBlur={handleAddress2}
-                        onChange={handleAddress2}
-                    >
-                    </input>
-                </div>
-            </div>
-            <div className={styles.form2}>
-                <div className={styles2.field}>
-                    <label className={styles2.fieldlabel}>Link to website</label>
-                    <input 
-                        className={styles2.fieldinput}
-                        type="text"
-                        placeholder="Enter Link"
-                        onBlur={handleWebsite}
-                        onChange={handleWebsite}
-                    >
-                    </input>
-                </div>
-            </div>
+           
             <div className="signup-button">
-                <button onClick={()=>{next();}} className="btn btn-primary shadow-2 mb-4 text-center">
+                <button onClick={()=>{next();}} className="btn btn-primary shadow-2 mb-4 text-center submit-button">
                     {loading ? (
                         <FontAwesomeIcon
                             className="spinner"
