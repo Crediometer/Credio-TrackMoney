@@ -23,7 +23,7 @@ const Login = () => {
                             <div class="input-group mb-4">
                                 <input type="password" class="form-control" placeholder="password"></input>
                             </div>
-                            <Link to="/dashboard"><button class="btn btn-primary shadow-2 mb-4">Login</button></Link>
+                            <Link to="/dashboard"><button class="btn btn-primary shadow-2 mb-4 submit-button">Login</button></Link>
                             <p class="mb-0 text-muted">Don’t have an account? <Link to="/Signup">Signup</Link></p>
                         </div>
                     </div>

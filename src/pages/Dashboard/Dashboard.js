@@ -66,7 +66,7 @@ const Dashboard = () => {
                                                     <div onClick={handletoggle} className="trans-calender">
                                                         <p>Date Range <span><FaCalendar/></span></p>
                                                     </div>
-                                                    {calender && <Calendar/>}
+                                                    {calender && <Calendar close={handletoggle}/>}
                                                 </div>
                                                 <div className="trans-download">
                                                     <select>

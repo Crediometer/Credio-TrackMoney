@@ -3,7 +3,7 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRangePicker } from 'react-date-range';
 // import { addDays } from 'date-fns';
 import { useState } from 'react';
-const Calendar = () => {
+const Calendar = ({close}) => {
    
 
     const [state, setState] = useState([
@@ -16,17 +16,20 @@ const Calendar = () => {
 
     return ( 
         <>
-            <div className='calender-background'>
-                <DateRangePicker
-                onChange={item => setState([item.selection])}
-                showSelectionPreview={true}
-                moveRangeOnFirstSelection={false}
-                months={2}
-                ranges={state}
-                direction="horizontal"
-                />;
+        <div className="modal-background" onClick={close}>
+            <div className="outer">
+                <div className='calender-background' onClick={(e) => e.stopPropagation()}>
+                    <DateRangePicker
+                    onChange={item => setState([item.selection])}
+                    showSelectionPreview={true}
+                    moveRangeOnFirstSelection={false}
+                    months={2}
+                    ranges={state}
+                    direction="horizontal"
+                    />;
+                </div>
             </div>
-            
+        </div>
         </>
      );
 }
