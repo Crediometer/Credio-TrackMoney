@@ -1,6 +1,6 @@
 const Card = ({title, value}) => {
     return ( 
-        <div class="col-md-6 col-xl-4">
+        <div class="col-md-6 col-xl-3">
             <div class="card yearly-sales">
                 <div class="card-block">
                     <h6 class="mb-4">{title}</h6>
