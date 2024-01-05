@@ -1,35 +1,34 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import Textfield from '../Formfield/Textfield';
+import consts from '../../pages/Auth/keys/const'
 import styles from '../../assets/css/Registration.module.css';
 import styles2 from '../../assets/css/style.module.css' 
 import styles3 from '../../assets/css/Activate.module.css'
 import { faEye, faSpinner, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import './MultiStepProgressBar.css'
-// import { connect } from "react-redux";
-// import Inputfield from '../Formfield/Inputfield';
-// import Selectfield from '../Formfield/Selectfield';
+import { connect } from "react-redux";
 import { useState } from 'react';
 import { FaTimesCircle } from 'react-icons/fa';
+import DragandDrop from "../Drag-and-Drop/DragandDrop";
+import { FiAlertTriangle } from "react-icons/fi";
+import JSEncrypt from "jsencrypt";
+import { postpersonal } from "../../Redux/SignUp/PersonalAction";
+import Errormodal from "../modal/Errormodal";
 // import { postpersonal } from '../../Redux/Activate/PersonalAction';
 // import Errormodal from "../Modal/Errormodal";
 const Personal = ({next, personal, error, loading}) => {
     const [nameState, setNameState] = useState({});
-    const [businessDescriptions, setbusinessDescriptions] = useState("");
+    const [discription, setdiscription] = useState("");
     const [phoneNumber, setphoneNumber] = useState("")
-    const [businessEmail, setbusinessEmail] = useState("")
-    const [supportEmail, setsupportEmail] = useState("")
-    const [address1, setaddress1] = useState("")
-    const [address2, setaddress2] = useState("")
+    const [email, setemail] = useState("")
+    const [address, setaddress] = useState("")
     const [state, setstate] = useState("")
-    const [websiteLink, setwebsiteLink] = useState("")
-    const[filename, setFilename] = useState('')
-    const[image, setImage] = useState(null)
+    const [password, setPassword] = useState("")
     const [errorHandler, setErrorHandler] = useState([false, ""]);
     const [showerror, setshowerror] = useState(false)
     const handleDescription = (e) => {
         const value = e.target.value;
-        setbusinessDescriptions(value);
-        setNameState({ ...nameState, ...{ businessDescriptions } });
+        setdiscription(value);
+        setNameState({ ...nameState, ...{ discription } });
     };
     const handleNumber = (e) => {
         const value = e.target.value;
@@ -38,13 +37,8 @@ const Personal = ({next, personal, error, loading}) => {
     };
     const handleEmail = (e) => {
         const value = e.target.value;
-        setbusinessEmail(value);
-        setNameState({ ...nameState, ...{ businessEmail } });
-    };
-    const handleSupportEmail = (e) => {
-        const value = e.target.value;
-        setsupportEmail(value);
-        setNameState({ ...nameState, ...{ supportEmail } });
+        setemail(value);
+        setNameState({ ...nameState, ...{ email } });
     };
     const handleState = (e) => {
         const value = e.target.value;
@@ -53,18 +47,16 @@ const Personal = ({next, personal, error, loading}) => {
     };
     const handleAddress1 = (e) => {
         const value = e.target.value;
-        setaddress1(value);
-        setNameState({ ...nameState, ...{ address1 } });
+        setaddress(value);
+        setNameState({ ...nameState, ...{ address } });
     };
-    const handleAddress2 = (e) => {
+    const handlePassword = (e) => {
         const value = e.target.value;
-        setaddress2(value);
-        setNameState({ ...nameState, ...{ address2 } });
-    };
-    const handleWebsite = (e) => {
-        const value = e.target.value;
-        setwebsiteLink(value);
-        setNameState({ ...nameState, ...{ websiteLink } });
+        var encrypt = new JSEncrypt();
+        encrypt.setPublicKey(`${consts.pub_key}`);
+        var encrypted = encrypt.encrypt(value);
+        setPassword(encrypted);
+        setNameState({ ...nameState, ...{ password: value } });
     };
 
     const togglemodal = ()=>{
@@ -73,7 +65,7 @@ const Personal = ({next, personal, error, loading}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+        console.log(nameState)
         try{
             await personal(nameState, ()=>{ 
             next();
@@ -100,6 +92,7 @@ const Personal = ({next, personal, error, loading}) => {
                         placeholder="Enter text"
                         onBlur={handleDescription}
                         onChange={handleDescription}
+                        required
                     >
                     </textarea>
                 </div>
@@ -114,6 +107,7 @@ const Personal = ({next, personal, error, loading}) => {
                         placeholder="Enter phone number"
                         onBlur={handleNumber}
                         onChange={handleNumber}
+                        required
                     >
                     </input>
                 </div>
@@ -127,6 +121,7 @@ const Personal = ({next, personal, error, loading}) => {
                         placeholder="Enter Email" 
                         onBlur={handleEmail}
                         onChange={handleEmail}
+                        required
                     >
                     </input>
                 </div>
@@ -138,6 +133,7 @@ const Personal = ({next, personal, error, loading}) => {
                         className={styles2.fieldinput}
                         onBlur={handleState}
                         onChange={handleState}
+                        required
                     >
                         <optgroup>
                             <option>-options-</option>
@@ -149,20 +145,35 @@ const Personal = ({next, personal, error, loading}) => {
             </div>
             <div className={styles.form2}>
                 <div className={styles2.field}>
-                    <label className={styles2.fieldlabel}></label>
+                    <label className={styles2.fieldlabel}>Address</label>
                     <input 
                         className={styles2.fieldinput}
                         type="text"
                         placeholder="Address Line 1"
                         onBlur={handleAddress1}
                         onChange={handleAddress1}
+                        required
+                    >
+                    </input>
+                </div>
+            </div>
+            <div className={styles.form2}>
+                <div className={styles2.field}>
+                    <label className={styles2.fieldlabel}>Password</label>
+                    <input 
+                        className={styles2.fieldinput}
+                        type="password"
+                        placeholder="***********"
+                        onBlur={handlePassword}
+                        onChange={handlePassword}
+                        required
                     >
                     </input>
                 </div>
             </div>
            
             <div className="signup-button">
-                <button onClick={()=>{next();}} className="btn btn-primary shadow-2 mb-4 text-center submit-button">
+                <button className="btn btn-primary shadow-2 mb-4 text-center submit-button">
                     {loading ? (
                         <FontAwesomeIcon
                             className="spinner"
@@ -174,26 +185,26 @@ const Personal = ({next, personal, error, loading}) => {
                 </button>              
             </div>
             
-            {/* {showerror && (<Errormodal error={error} togglemodal={togglemodal}/>)} */}
+            {showerror && (<Errormodal error={error} togglemodal={togglemodal}/>)}
         </form>
     );
 }
 
-export default Personal
 
-// const mapStoreToProps = (state) => {
-//     return {
-//         error: state.personal.error,
-//         loading: state.personal.loading
-//     };
-// };
+const mapStoreToProps = (state) => {
+    console.log(state)
+    return {
+        error: state.personal.error,
+        loading: state.personal.loading
+    };
+};
   
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         personal: (nameState, history, setErrorHandler) => {
-//             dispatch(postpersonal(nameState, history, setErrorHandler));
-//         }
-//     };
-// };
+const mapDispatchToProps = (dispatch) => {
+    return {
+        personal: (nameState, history, setErrorHandler) => {
+            dispatch(postpersonal(nameState, history, setErrorHandler));
+        }
+    };
+};
 
-// export default connect(mapStoreToProps, mapDispatchToProps)(Personal);
+export default connect(mapStoreToProps, mapDispatchToProps)(Personal);

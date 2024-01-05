@@ -1,27 +1,28 @@
 import { connect } from "react-redux";
 import "./DragandDrop.css"
 import { useState, useRef, useEffect } from "react";
-import { verifyboard, verifyprofileimg } from "../../Redux/Verify/FileAction";
+import { verifyprofileimg } from "../../Redux/Verify/FileAction";
 import LoadingModal from "../modal/LoadingModal";
-const DragandDrop = ({
+const DragandDropImage = ({
     verifyprofileimg,
     errormessage,
     loading,
-    dataurl,
-    board
+    profile,
+    dataurl
 }) => {
     const [files, setFiles] = useState(null);
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(false)
     const inputRef = useRef();
-
+    console.log(dataurl)
     const handleDragOver = (event) => {
         event.preventDefault();
     };
     useEffect(() => {
         // Update the dataurl whenever it changes
-        board(dataurl);
-    }, [dataurl, board]);
+        profile(dataurl);
+    }, [dataurl, profile]);
+
     const handleSubmit = (event)=>{
         event.preventDefault();
         setFiles(event.target.files)
@@ -31,7 +32,7 @@ const DragandDrop = ({
         try{
             verifyprofileimg(data, ()=>{
                 setSuccess(true)
-                board(dataurl)
+                profile(dataurl)
             },()=>{
                 setError(true)
             })
@@ -48,7 +49,7 @@ const DragandDrop = ({
         try{
             verifyprofileimg(data, ()=>{
                 setSuccess(true)
-                board(dataurl)
+                profile(dataurl)
             },()=>{
                 setError(true)
             })
@@ -94,16 +95,16 @@ const mapStoreToProps = (state) => {
     return {
         errormessage: state.verifyprofileimg.error,
         loading: state.verifyprofileimg.loading,
-        dataurl:state.verifyprofileimg?.boarddata?.url,
+        dataurl:state.verifyprofileimg?.data?.url,
     };
 };
   
 const mapDispatchToProps = (dispatch) => {
     return {
         verifyprofileimg: (nameState, history, errors) => {
-            dispatch(verifyboard(nameState, history, errors));
+            dispatch(verifyprofileimg(nameState, history, errors));
         }
     };
 };
 
-export default connect(mapStoreToProps, mapDispatchToProps)(DragandDrop);
+export default connect(mapStoreToProps, mapDispatchToProps)(DragandDropImage);

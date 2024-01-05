@@ -1,7 +1,16 @@
+import { connect } from 'react-redux';
 import './Sidebar.css'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { LogOutAuthAction } from '../../../Redux/Login/LoginAction';
 
-const Sidebar = ({togglemodal}) => {
+const Sidebar = ({togglemodal, logout}) => {
+    const history = useNavigate();
+    const handlelogout =()=>{
+        logout(
+            ()=>{ history(`/`)}
+        )
+    }
+
     return ( 
         <div className="sidebar">
                <nav class="pcoded-navbar">
@@ -26,11 +35,11 @@ const Sidebar = ({togglemodal}) => {
                             <li onClick={togglemodal} data-username="form elements advance componant validation masking wizard picker select" class="nav-item">
                                 <a class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Dispute Management</span></a>
                             </li>
-                            <div className="logout-button">
-                            <li data-username="form elements advance componant validation masking wizard picker select" class="nav-item">
-                                <Link to="/" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Log Out</span></Link>
-                            </li>
-                        </div>
+                            <div className="logout-button" onClick={handlelogout}>
+                                <li data-username="form elements advance componant validation masking wizard picker select" class="nav-item">
+                                    <a class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Log Out</span></a>
+                                </li>
+                            </div>
                         </ul>
                        
                     </div>
@@ -40,5 +49,17 @@ const Sidebar = ({togglemodal}) => {
         </div>
      );
 }
+const mapStoreToProps = (state) => {
+    return {
+      
+    };
+};
+  
+const mapDispatchToProps = (dispatch) => {
+    return {
+        logout: (history) => dispatch(LogOutAuthAction(history)),
+    };
+};
  
-export default Sidebar;
+
+export default connect(mapStoreToProps,mapDispatchToProps)(Sidebar);

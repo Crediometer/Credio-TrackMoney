@@ -1,110 +1,140 @@
-// import Textfield from '../Formfield/Textfield';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faSpinner, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 import styles from '../../assets/css/Registration.module.css';
 import styles2 from '../../assets/css/style.module.css' 
 import styles3 from '../../assets/css/Activate.module.css'
 import './MultiStepProgressBar.css'
-// import Inputfield from '../Formfield/Inputfield';
-// import Selectfield from '../Formfield/Selectfield';
 import { useEffect, useState } from 'react';
 import { FaTimesCircle } from 'react-icons/fa';
 import {FiAlertTriangle} from 'react-icons/fi'
 import {AiOutlineFile} from 'react-icons/ai'
 import DragandDrop from "../Drag-and-Drop/DragandDrop";
-// import { postbusiness, postkyc } from '../../Redux/Activate/BusinessAction';
-// import LottieAnimation from '../../Lotties';
-// import loader from '../../Assets/loading.json'
-// import Errormodal from '../Modal/Errormodal';
-// import LoadingModal from '../Modal/LoadingModal';
-const Business = ({next, business, error, loading,kyc,kycload, kycerror}) => {
+import { verifyBVN, verifyRC } from "../../Redux/Verify/BvnAction";
+import LoadingModal from "../modal/LoadingModal";
+import Errormodal from "../modal/Errormodal";
+import DragandDropImage from "../Drag-and-Drop/DragandDropImage";
+import DragandDropMermat from "../Drag-and-Drop/DragandDropMermat";
+import { postbusiness } from "../../Redux/SignUp/BusinessAction";
+import LottieAnimation from '../../Lotties';
+import loader from '../../assets/loading.json'
+
+const Business = ({
+    next, 
+    business, 
+    error, 
+    loading,
+    verifybvn,
+    verifyrc,
+    bvnload, 
+    bvnerror,
+    rcload, 
+    rcerror,
+    rcname,
+    bvnname
+}) => {
     const [nameState, setNameState] = useState({});
     const [formState, setFormState] = useState(null)
     const [postState, setPostState] = useState({});
-    const[filename, setFilename] = useState('')
-    const [file, setFile] = useState(null);
-    const [file2, setFile2] = useState(null);
-    const[image, setImage] = useState(null)
-    const[filename2, setFilename2] = useState('')
-    const[image2, setImage2] = useState(null)
     const [mermat, setMermat] = useState("");
+    const [proImage, setProImage] = useState("");
+    const [board, setBoard] = useState("");
     const [bvn, setbvn] = useState("");
     const [dob, setdob] = useState('');
-    const [show, setShow] = useState(false)
-    const [showkyc, setshowkyc]= useState(false)
-    // const [mermat, setmermat] = useState('');
+    const [showbvn, setShowbvn] = useState(false)
+    const [showrc, setShowrc] = useState(false)
+    const [showbvnerror, setshowbvnerror]= useState(false)
+    const [showRCerror, setshowRCerror]= useState(false)
     const [rcNumber, setrcNumber]= useState("");
     const [errorHandler, setErrorHandler] = useState([false, ""]);
     const [showerror, setshowerror] = useState(false)
-    // const options = [{name:'name'},{name:'games'}]
-
-    // const handlebvn = (e) => {
-    //     const value = e.target.value;
-    //     setbvn(value);
-    //     setNameState({ ...nameState, ...{ bvn } });
-    //     setPostState({ ...postState, ...{ bvn } });
-    // };
-    // const handledob = (e) => {
-    //     const value = e.target.value;
-    //     setdob(value);
-    //     setNameState({ ...nameState, ...{ dob } });
-    //     setPostState({ ...postState, ...{ dob } });
-    // };
-    useEffect(() => {
-        if (dob !== "" && bvn.length === 11) {
-            kyc(postState, 
-                ()=>{ 
-                setShow(true);
-                }, ()=>{ 
-                    setshowkyc(true);
-                    }
-            )
-            // postData(nameState);
-            // setaccountName(name.data.accountName)
-        }
-        
-    }, [bvn, dob, postState]);
+    const handlebvn = (e) => {
+        const value = e.target.value;
+        setbvn(value);
+        setNameState({ ...nameState, ...{ bvn } });
+        setPostState({ ...postState, ...{ bvn } });
+    };
+    const handledob = (e) => {
+        const value = e.target.value;
+        setdob(value);
+        setNameState({ ...nameState, ...{ userDob: dob } });
+        setPostState({ ...postState, ...{ userDob: dob } });
+    };
     const handlercnumber = (e) => {
         const value = e.target.value;
         setrcNumber(value);
         setNameState({ ...nameState, ...{ rcNumber } });
     };
-    const handlemermat = (e) => {
-        const value = e.target.value;
-        setMermat(value);
-        setNameState({ ...nameState, ...{ mermat } });
-    };
     const togglemodal = ()=>{
         setshowerror(!showerror)
     }
     const togglemodal2 = ()=>{
-        setshowkyc(!showkyc)
+        setshowbvnerror(!showbvnerror)
     }
-
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     const formData = new FormData();
-    //     formData.append('mermat',filename2);
-    //     formData.append('bvn', bvn);
-    //     formData.append('dob',dob);
-    //     formData.append('rcNumber', rcNumber);
-    //     try{
+    const togglemodal3 = ()=>{
+        setshowRCerror(!showRCerror)
+    }
+    const updateProImage = (imageData) => {
+        setProImage(imageData);
+    };
+    const updateMermat = (filedata) => {
+        setMermat(filedata);
+    };
+    const updateboard = (filedata) => {
+        setBoard(filedata);
+    };
+      
+    useEffect(()=>{
+        setNameState({ ...nameState, ...{ profileURL: proImage, mermatURL: mermat, shareholdersAgreement: board } });
+    },[board, mermat, proImage])
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        // setNameState({ ...nameState, ...{ profileURL: proImage, mermatURL: mermat, shareholdersAgreement: board } });
+        console.log(nameState)
+        try{
             
-    //         await business(formData, ()=>{ 
-    //         next();
-    //         // setPending(true);
-    //         }, ()=>{ 
-    //             setErrorHandler(error)
-    //             setshowerror(true)
-    //             // setPending(false);
-    //         });
-    //     }catch(error){
-    //         // setPending(false)
-    //     }
-    // };
+            await business(nameState, ()=>{ 
+            next();
+            // setPending(true);
+            }, ()=>{ 
+                setErrorHandler(error)
+                setshowerror(true)
+                // setPending(false);
+            });
+        }catch(error){
+            // setPending(false)
+        }
+    };
+    useEffect(() => {
+        console.log("proImage:", proImage);
+        console.log("mermat:", mermat);
+        console.log("board:", board);
+    }, [proImage, mermat, board]);
+    useEffect(() => {
+        if (dob !== "" && bvn.length === 11) {
+            verifybvn(postState, 
+                ()=>{ 
+                    setShowbvn(true);
+                }, ()=>{ 
+                    setshowbvnerror(true);
+                }
+            )
+        }  
+    }, [bvn, dob, postState]);
+    useEffect(() => {
+        if (rcNumber.length === 7) {
+            verifyrc({rcNumber: rcNumber}, 
+                ()=>{ 
+                    setShowrc(true);
+                }, ()=>{ 
+                    setshowRCerror(true);
+                }
+            )
+        }  
+    }, [rcNumber]);
+
     return ( 
-        <form method='post'>
+        <form method='post' onSubmit={handleSubmit}>
             <p className="businessHead">Enter verification details for at least one of the directors</p>
             <div className={styles.form2}>
                 <div className={styles2.field}>
@@ -113,11 +143,13 @@ const Business = ({next, business, error, loading,kyc,kycload, kycerror}) => {
                         className={styles2.fieldinput}
                         type="text"
                         placeholder="Enter BNV"
-                        // onBlur={handlebvn}
-                        // onChange={handlebvn}
+                        required
+                        onBlur={handlebvn}
+                        onChange={handlebvn}
                     >
                     </input>
                 </div>
+                {showbvn && (<p className={styles2.fieldvalue}>{bvnname}</p>)}
             </div>
             <div className={styles.form2}>
                 <div className={styles2.field}>
@@ -125,12 +157,13 @@ const Business = ({next, business, error, loading,kyc,kycload, kycerror}) => {
                     <input 
                         className={styles2.fieldinput}
                         type="date"
-                        // placeholder="Enter Rc Number"
-                        // onBlur={handledob}
-                        // onChange={handledob}
+                        required
+                        onBlur={handledob}
+                        onChange={handledob}
                     >
                     </input>
                 </div>
+                
             </div>
             <div className={styles.form2}>
                 <div className={styles2.field}>
@@ -139,64 +172,81 @@ const Business = ({next, business, error, loading,kyc,kycload, kycerror}) => {
                         className={styles2.fieldinput}
                         type="text"
                         placeholder="Enter Rc Number"
-                        // onBlur={handlercnumber}
-                        // onChange={handlercnumber}
+                        required
+                        onBlur={handlercnumber}
+                        onChange={handlercnumber}
                     >
                     </input>
                 </div>
+                {showrc && (<p className={styles2.fieldvalue}>{rcname}</p>)}
+            </div>
+            <div className={styles.form2}>
+               <p className='addimage'>Profile Imagef</p>
+               <DragandDropImage profile={updateProImage}/>
+               <p className='warning'><FiAlertTriangle/>Please choose the file under 5KB to upload!</p>
             </div>
             <div className={styles.form2}>
                <p className='addimage'>Mermat</p>
-               <DragandDrop/>
+               <DragandDropMermat mermat={updateMermat}/>
                <p className='warning'><FiAlertTriangle/>Please choose the file under 5KB to upload!</p>
             </div>
             <div className={styles.form2}>
                <p className='addimage'>Board Resolution</p>
-               <DragandDrop/>
+               <DragandDrop board={updateboard}/>
                <p className='warning'><FiAlertTriangle/>Please choose the file under 5KB to upload!</p>
             </div>
-            {/* {show && (
+            {/* {show && ( */}
                 <div>
                     {loading ? (
-                        <button className={styles3.activateButton} disabled>
+                        <button className="btn btn-primary shadow-2 mb-4 text-center submit-button" disabled>
                             <LottieAnimation data={loader}/>
                         </button>
                     ) : (
-                        <button className={styles3.activateButton}><span>Save</span></button>
+                        <button className="btn btn-primary shadow-2 mb-4 text-center submit-button"><span>Save</span></button>
                     )}
                 </div>
-            )} */}
+            {/* )} */}
             <div className="signup-button">
-            <button onClick={()=>{next();}} className="btn btn-primary shadow-2 mb-4 text-center submit-button"><span>Save</span></button>        
+            {/* <button onClick={()=>{next();}} className="btn btn-primary shadow-2 mb-4 text-center submit-button"><span>Save</span></button>         */}
             </div>
             
  
-            {/* {kycload && (<LoadingModal/>)}
-            {showkyc&& (<Errormodal error={kycerror} togglemodal={togglemodal2}/>)}
-            {showerror && (<Errormodal error={error} togglemodal={togglemodal}/>)} */}
+            {bvnload && (<LoadingModal/>)}
+            {rcload && (<LoadingModal/>)}
+            {showbvnerror&& (<Errormodal error={bvnerror} togglemodal={togglemodal2}/>)}
+            {showRCerror&& (<Errormodal error={rcerror} togglemodal={togglemodal3}/>)}
+            {showerror && (<Errormodal error={error} togglemodal={togglemodal}/>)}
         </form>
     );
 }
 
-export default Business;
-// const mapStoreToProps = (state) => {
-//     return {
-//         error: state.business.error,
-//         loading: state.business.loading,
-//         kycload: state.kyc.loading,
-//         kycerror: state.kyc.error
-//     };
-// };
-  
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         business: (nameState, history, setErrorHandler) => {
-//             dispatch(postbusiness(nameState, history, setErrorHandler));
-//         },
-//         kyc: (nameState, history, errors) => {
-//             dispatch(postkyc(nameState, history, errors));
-//         }
-//     };
-// };
 
-// export default connect(mapStoreToProps, mapDispatchToProps)(Business);
+const mapStoreToProps = (state) => {
+    console.log(state)
+    return {
+        bvnname:state.verifybvn.data.fullName,
+        rcname:state.verifyrc.data.businessName,
+        error: state.business.error,
+        loading: state.business.loading,
+        bvnload: state.verifybvn.loading,
+        bvnerror: state.verifybvn.error,
+        rcload: state.verifyrc.loading,
+        rcerror: state.verifyrc.error
+    };
+};
+  
+const mapDispatchToProps = (dispatch) => {
+    return {
+        business: (nameState, history, setErrorHandler) => {
+            dispatch(postbusiness(nameState, history, setErrorHandler));
+        },
+        verifybvn: (nameState, history, errors) => {
+            dispatch(verifyBVN(nameState, history, errors));
+        },
+        verifyrc: (nameState, history, errors) => {
+            dispatch(verifyRC(nameState, history, errors));
+        }
+    };
+};
+
+export default connect(mapStoreToProps, mapDispatchToProps)(Business);

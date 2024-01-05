@@ -1,0 +1,6 @@
+export const BVN_REQUEST = "BVN_REQUEST"
+export const BVN_SUCCESS = "BVN_SUCCESS"
+export const BVN_FALIURE = "BVN_FALIURE"
+export const RC_NO_REQUEST = "RC_NO_REQUEST"
+export const RC_NO_SUCCESS = "RC_NO_SUCCESS"
+export const RC_NO_FALIURE = "RC_NO_FALIURE"

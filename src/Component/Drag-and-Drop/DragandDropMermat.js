@@ -1,14 +1,14 @@
 import { connect } from "react-redux";
 import "./DragandDrop.css"
 import { useState, useRef, useEffect } from "react";
-import { verifyboard, verifyprofileimg } from "../../Redux/Verify/FileAction";
+import { verifymermat, verifyprofileimg } from "../../Redux/Verify/FileAction";
 import LoadingModal from "../modal/LoadingModal";
-const DragandDrop = ({
+const DragandDropMermat = ({
     verifyprofileimg,
     errormessage,
     loading,
     dataurl,
-    board
+    mermat
 }) => {
     const [files, setFiles] = useState(null);
     const [success, setSuccess] = useState(false);
@@ -18,10 +18,11 @@ const DragandDrop = ({
     const handleDragOver = (event) => {
         event.preventDefault();
     };
+
     useEffect(() => {
         // Update the dataurl whenever it changes
-        board(dataurl);
-    }, [dataurl, board]);
+        mermat(dataurl);
+    }, [dataurl, mermat]);
     const handleSubmit = (event)=>{
         event.preventDefault();
         setFiles(event.target.files)
@@ -31,7 +32,7 @@ const DragandDrop = ({
         try{
             verifyprofileimg(data, ()=>{
                 setSuccess(true)
-                board(dataurl)
+                mermat(dataurl)
             },()=>{
                 setError(true)
             })
@@ -48,7 +49,7 @@ const DragandDrop = ({
         try{
             verifyprofileimg(data, ()=>{
                 setSuccess(true)
-                board(dataurl)
+                mermat(dataurl)
             },()=>{
                 setError(true)
             })
@@ -94,16 +95,16 @@ const mapStoreToProps = (state) => {
     return {
         errormessage: state.verifyprofileimg.error,
         loading: state.verifyprofileimg.loading,
-        dataurl:state.verifyprofileimg?.boarddata?.url,
+        dataurl:state.verifyprofileimg?.mermatdata?.url,
     };
 };
   
 const mapDispatchToProps = (dispatch) => {
     return {
         verifyprofileimg: (nameState, history, errors) => {
-            dispatch(verifyboard(nameState, history, errors));
+            dispatch(verifymermat(nameState, history, errors));
         }
     };
 };
 
-export default connect(mapStoreToProps, mapDispatchToProps)(DragandDrop);
+export default connect(mapStoreToProps, mapDispatchToProps)(DragandDropMermat);

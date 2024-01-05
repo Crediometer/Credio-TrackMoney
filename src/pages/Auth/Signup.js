@@ -3,11 +3,20 @@ import MultiStepProgressbar from "../../Component/Multiformbar/MultiStepProgress
 import Personal from "../../Component/Multiformbar/Personal";
 import Business from "../../Component/Multiformbar/Business";
 import Payout from "../../Component/Multiformbar/Payout";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
-const Signup = () => {
+const Signup = ({account}) => {
     const [index, setIndex] = useState(1)
+    
+    useEffect(()=>{
+        if(account==false){
+            setIndex(2)
+        }
+    },[account])
+
+    
     const nextButton = () => {
         window.scrollTo(0, 0);
         if (index < 4){
@@ -67,5 +76,14 @@ const Signup = () => {
         </div>
      );
 }
- 
-export default Signup;
+const mapStateToProps = state => {
+    console.log(state)
+    return{
+        error:state?.login?.error,
+        loading: state?.login?.dataAdded,
+        account: state?.login?.token?.accountSetupDone
+        // getprofile: state?.getprofile?.data
+    }
+}
+
+export default connect(mapStateToProps,)(Signup);

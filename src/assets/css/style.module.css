@@ -7,7 +7,15 @@
     letter-spacing: 0.1px;
     color: #202020;
 }
-
+.fieldvalue{
+    font-family: 'Open Sans';
+    text-align: right !important;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.875rem;
+    letter-spacing: 0.1px;
+    color: #202020;
+}
 .fieldinput{
     margin-top: 8px;
     width: 100%;

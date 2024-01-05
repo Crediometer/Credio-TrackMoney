@@ -57,6 +57,11 @@ File: style.css
 /**  =====================
       Custom css start
 ==========================  **/
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 body {
   font-family: "Open Sans", sans-serif;
   font-size: 14px;
@@ -116,7 +121,9 @@ p {
 strong {
   font-weight: 400;
 }
-
+.spinner{
+  width: 30%;
+}
 .img-radius {
   border-radius: 50%;
 }
