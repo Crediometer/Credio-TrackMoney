@@ -59,7 +59,8 @@ export const verifyBVN = (poststate, history, setErrorHandler) => {
             }
         }
         catch(error){
-            const errormsg = error.message
+           
+            const errormsg = error.response.data.message
             dispatch(bvnfaliure(errormsg))
             setErrorHandler({ hasError: true, message: error?.response?.data?.message });
         }
@@ -87,7 +88,7 @@ export const verifyRC = (poststate, history, setErrorHandler) => {
             }
         }
         catch(error){
-            const errormsg = error.message
+            const errormsg = error.response.data.message
             dispatch(rcfaliure(errormsg))
             setErrorHandler({ hasError: true, message: error?.response?.data?.message });
         }

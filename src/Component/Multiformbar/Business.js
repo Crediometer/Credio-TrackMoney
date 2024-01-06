@@ -143,6 +143,7 @@ const Business = ({
                         className={styles2.fieldinput}
                         type="text"
                         placeholder="Enter BNV"
+                        maxLength={11}
                         required
                         onBlur={handlebvn}
                         onChange={handlebvn}
@@ -158,6 +159,7 @@ const Business = ({
                         className={styles2.fieldinput}
                         type="date"
                         required
+                        
                         onBlur={handledob}
                         onChange={handledob}
                     >
@@ -173,6 +175,7 @@ const Business = ({
                         type="text"
                         placeholder="Enter Rc Number"
                         required
+                        maxLength={7}
                         onBlur={handlercnumber}
                         onChange={handlercnumber}
                     >
@@ -199,7 +202,9 @@ const Business = ({
                 <div>
                     {loading ? (
                         <button className="btn btn-primary shadow-2 mb-4 text-center submit-button" disabled>
-                            <LottieAnimation data={loader}/>
+                            <div className="animation">
+                                <LottieAnimation data={loader}/>
+                            </div>
                         </button>
                     ) : (
                         <button className="btn btn-primary shadow-2 mb-4 text-center submit-button"><span>Save</span></button>
@@ -211,8 +216,8 @@ const Business = ({
             </div>
             
  
-            {bvnload && (<LoadingModal/>)}
-            {rcload && (<LoadingModal/>)}
+            {bvnload && (<LoadingModal message="Validating BVN Details"/>)}
+            {rcload && (<LoadingModal message="Validating RC Number"/>)}
             {showbvnerror&& (<Errormodal error={bvnerror} togglemodal={togglemodal2}/>)}
             {showRCerror&& (<Errormodal error={rcerror} togglemodal={togglemodal3}/>)}
             {showerror && (<Errormodal error={error} togglemodal={togglemodal}/>)}

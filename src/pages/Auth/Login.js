@@ -90,7 +90,9 @@ const Login = ({login, loading, error,account}) => {
                                 }
                                 {loading ? (
                                     <button class="btn btn-primary shadow-2 mb-4 submit-button" disabled>
-                                        <LottieAnimation data={loader}/>
+                                       <div className="animation">
+                                            <LottieAnimation data={loader}/>
+                                        </div>
                                     </button>
                                 ) : (
                                     <button class="btn btn-primary shadow-2 mb-4 submit-button"><span>Login</span></button>

@@ -13,12 +13,15 @@ import { FiAlertTriangle } from "react-icons/fi";
 import JSEncrypt from "jsencrypt";
 import { postpersonal } from "../../Redux/SignUp/PersonalAction";
 import Errormodal from "../modal/Errormodal";
+import LottieAnimation from '../../Lotties';
+import loader from '../../assets/loading.json'
 // import { postpersonal } from '../../Redux/Activate/PersonalAction';
 // import Errormodal from "../Modal/Errormodal";
 const Personal = ({next, personal, error, loading}) => {
     const [nameState, setNameState] = useState({});
     const [discription, setdiscription] = useState("");
-    const [phoneNumber, setphoneNumber] = useState("")
+    const [phoneNumber, setphoneNumber] = useState("");
+    const [convertedNumber, setConvertedNumber] = useState('');
     const [email, setemail] = useState("")
     const [address, setaddress] = useState("")
     const [state, setstate] = useState("")
@@ -33,7 +36,11 @@ const Personal = ({next, personal, error, loading}) => {
     const handleNumber = (e) => {
         const value = e.target.value;
         setphoneNumber(value);
-        setNameState({ ...nameState, ...{ phoneNumber } });
+        if (phoneNumber.length > 0) {
+            const converted = `+234${phoneNumber.slice(1)}`;
+            setConvertedNumber(converted);
+        }
+        setNameState({ ...nameState, ...{ phoneNumber: convertedNumber } });
     };
     const handleEmail = (e) => {
         const value = e.target.value;
@@ -105,6 +112,7 @@ const Personal = ({next, personal, error, loading}) => {
                         className={styles2.fieldinput}
                         type="text"
                         placeholder="Enter phone number"
+                        maxLength={11}
                         onBlur={handleNumber}
                         onChange={handleNumber}
                         required
@@ -173,16 +181,15 @@ const Personal = ({next, personal, error, loading}) => {
             </div>
            
             <div className="signup-button">
-                <button className="btn btn-primary shadow-2 mb-4 text-center submit-button">
-                    {loading ? (
-                        <FontAwesomeIcon
-                            className="spinner"
-                            icon={faSpinner}
-                        ></FontAwesomeIcon>
-                        ): ( 
-                        <span>Save</span>
-                            )} 
-                </button>              
+                {loading ? (
+                    <button className="btn btn-primary shadow-2 mb-4 text-center submit-button" disabled>
+                        <div className="animation">
+                            <LottieAnimation data={loader}/>
+                        </div>
+                    </button>
+                ) : (
+                    <button className="btn btn-primary shadow-2 mb-4 text-center submit-button"><span>Save</span></button>
+                )}         
             </div>
             
             {showerror && (<Errormodal error={error} togglemodal={togglemodal}/>)}

@@ -63,7 +63,7 @@ const DragandDropMermat = ({
                 {Array.from(files).map((file, idx) => <li key={idx}>{file.name}</li> )}
             </ul>
             <div className="actions">
-                <button className="cancle-select" onClick={() => setFiles(null)}>Cancel</button>
+                {/* <button className="cancle-select" onClick={() => setFiles(null)}>Cancel</button> */}
             </div>
         </div>
       )
@@ -81,6 +81,8 @@ const DragandDropMermat = ({
                 multiple
                 onChange={handleSubmit}
                 hidden
+                required
+                accept="application/pdf"
                 // accept="image/png, image/jpeg"
                 ref={inputRef}
             />

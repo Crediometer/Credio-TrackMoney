@@ -27,6 +27,9 @@
     border-radius: 50%;
 }
 .modalss{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     z-index: 5;
     position: relative;
     padding: 30px;
@@ -34,6 +37,14 @@
     width: 30% !important;
     background-color: white;
     border-radius: 8px;
+}
+.onetime-modal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.animation{
+    width: 20%;
 }
 .create-payment{
     width: 100%;

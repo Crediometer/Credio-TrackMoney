@@ -62,7 +62,7 @@ const DragandDrop = ({
                 {Array.from(files).map((file, idx) => <li key={idx}>{file.name}</li> )}
             </ul>
             <div className="actions">
-                <button className="cancle-select" onClick={() => setFiles(null)}>Cancel</button>
+                {/* <button className="cancle-select" onClick={() => board(null)}>Cancel</button> */}
             </div>
         </div>
       )
@@ -80,8 +80,10 @@ const DragandDrop = ({
                 multiple
                 onChange={handleSubmit}
                 hidden
+                accept="application/pdf"
                 // accept="image/png, image/jpeg"
                 ref={inputRef}
+                required
             />
             <button onClick={(e) => {inputRef.current.click(); e.preventDefault();}} className="file-select">Select Files</button>
             {loading && (<LoadingModal/>)}

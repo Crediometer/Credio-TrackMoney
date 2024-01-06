@@ -1,7 +1,8 @@
 import { FaTimes } from 'react-icons/fa';
 import LottieAnimation from '../../Lotties';
 import wrong from '../../assets/Errorr.json'
-const Errormodal = ({error, togglemodal}) => {
+import { Link } from 'react-router-dom';
+const Errormodal = ({error, togglemodal, link}) => {
     return ( 
         <div className="modal-background">
             <div className="modalss">
@@ -14,7 +15,7 @@ const Errormodal = ({error, togglemodal}) => {
                     </div>
                     <p className="create-payment">{error}</p>
                     <div className="signup-button">
-                        <button class="btn btn-primary shadow-2 mb-4" onClick={togglemodal}>Ok</button>   
+                        <Link to={link}><button class="btn btn-primary shadow-2 mb-4 submit-button" onClick={togglemodal}>Ok</button></Link>
                     </div>
                 </div>
             </div>

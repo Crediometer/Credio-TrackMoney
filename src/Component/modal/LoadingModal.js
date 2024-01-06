@@ -8,7 +8,9 @@ const LoadingModal = ({message}) => {
         <div className="successmodal">
             <div className="modal-background">
                 <div className="modalss">
-                   <LottieAnimation data={loader}/>
+                    <div className="animation">
+                        <LottieAnimation data={loader}/>
+                    </div>
                    <p className="create-payment">{message}</p> 
                 </div>
             </div>
