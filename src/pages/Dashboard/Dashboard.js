@@ -80,7 +80,7 @@ const Dashboard = ({fetchtransaction, fetchstatement,fetchoverview,transaction, 
                                                             value={
                                                                 overview.accountBalance
                                                             }
-                                                            style="currency"
+                                                            style={`currency`}
                                                             currency="NGN"
                                                         />
                                                         }/>
