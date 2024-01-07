@@ -1,59 +1,54 @@
 const Navbar = () => {
     return ( 
         <div className="navbar">
-             <header class="navbar pcoded-header navbar-expand-lg navbar-light">
-                <div class="m-header">
-                    <a class="mobile-menu" id="mobile-collapse1" href="javascript:"><span></span></a>
-                    <a href="index.html" class="b-brand">
-                        <div class="b-bg">
-                            <i class="feather icon-trending-up"></i>
+             <header className="navbar pcoded-header navbar-expand-lg navbar-light">
+                <div className="m-header">
+                    {/* <a className="mobile-menu" id="mobile-collapse1" href="javascript:"><span></span></a> */}
+                    <div className="b-brand">
+                        <div className="b-bg">
+                            <i className="feather icon-trending-up"></i>
                         </div>
-                        <span class="b-title">Datta Able</span>
-                    </a>
+                        <span className="b-title">Datta Able</span>
+                    </div>
                 </div>
-                <a class="mobile-menu" id="mobile-header" href="javascript:">
-                    <i class="feather icon-more-horizontal"></i>
-                </a>
-                <div class="collapse navbar-collapse">
-                    {/* <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <div class="main-search">
-                                <div class="input-group">
-                                    <input type="text" id="m-search" class="form-control" placeholder="Search . . ."></input>
-                                    <a href="javascript:" class="input-group-append search-close">
-                                        <i class="feather icon-x input-group-text"></i>
+                <div className="collapse navbar-collapse">
+                    {/* <ul className="navbar-nav mr-auto">
+                        <li className="nav-item">
+                            <div className="main-search">
+                                <div className="input-group">
+                                    <input type="text" id="m-search" className="form-control" placeholder="Search . . ."></input>
+                                    <a href="javascript:" className="input-group-append search-close">
+                                        <i className="feather icon-x input-group-text"></i>
                                     </a>
-                                    <span class="input-group-append search-btn btn btn-primary">
-                                        <i class="feather icon-search input-group-text"></i>
+                                    <span className="input-group-append search-btn btn btn-primary">
+                                        <i className="feather icon-search input-group-text"></i>
                                     </span>
                                 </div>
                             </div>
                         </li>
                     </ul> */}
-                    <ul class="navbar-nav ml-auto">
+                    {/* <ul className="navbar-nav ml-auto">
                         <li>
-                            <div class="dropdown drp-user">
-                                <a href="javascript:" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="icon feather icon-settings"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right profile-notification">
-                                    <div class="pro-head">
-                                        <img src="assets/images/user/avatar-1.jpg" class="img-radius" alt="User-Profile-Image"></img>
+                            <div className="dropdown drp-user">
+                            
+                                <div className="dropdown-menu dropdown-menu-right profile-notification">
+                                    <div className="pro-head">
+                                        <img src="assets/images/user/avatar-1.jpg" className="img-radius" alt="User-Profile-Image"></img>
                                         <span>John Doe</span>
-                                        <a href="auth-signin.html" class="dud-logout" title="Logout">
-                                            <i class="feather icon-log-out"></i>
+                                        <a href="auth-signin.html" className="dud-logout" title="Logout">
+                                            <i className="feather icon-log-out"></i>
                                         </a>
                                     </div>
-                                    <ul class="pro-body">
-                                        <li><a href="javascript:" class="dropdown-item"><i class="feather icon-settings"></i> Settings</a></li>
-                                        <li><a href="javascript:" class="dropdown-item"><i class="feather icon-user"></i> Profile</a></li>
-                                        <li><a href="message.html" class="dropdown-item"><i class="feather icon-mail"></i> My Messages</a></li>
-                                        <li><a href="auth-signin.html" class="dropdown-item"><i class="feather icon-lock"></i> Lock Screen</a></li>
+                                    <ul className="pro-body">
+                                        <li><a href="javascript:" className="dropdown-item"><i className="feather icon-settings"></i> Settings</a></li>
+                                        <li><a href="javascript:" className="dropdown-item"><i className="feather icon-user"></i> Profile</a></li>
+                                        <li><a href="message.html" className="dropdown-item"><i className="feather icon-mail"></i> My Messages</a></li>
+                                        <li><a href="auth-signin.html" className="dropdown-item"><i className="feather icon-lock"></i> Lock Screen</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </li>
-                    </ul>
+                    </ul> */}
                 </div>
             </header>
         </div>

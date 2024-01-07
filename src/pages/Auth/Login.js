@@ -48,35 +48,35 @@ const Login = ({login, loading, error,account}) => {
     }
     return ( 
         <div className="login">
-            <div class="auth-wrapper">
-                <div class="auth-content">
-                    <div class="auth-bg">
-                        <span class="r"></span>
-                        <span class="r s"></span>
-                        <span class="r s"></span>
-                        <span class="r"></span>
+            <div className="auth-wrapper">
+                <div className="auth-content">
+                    <div className="auth-bg">
+                        <span className="r"></span>
+                        <span className="r s"></span>
+                        <span className="r s"></span>
+                        <span className="r"></span>
                     </div>
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <div class="mb-4">
-                                <i class="feather icon-unlock auth-icon"></i>
+                    <div className="card">
+                        <div className="card-body text-center">
+                            <div className="mb-4">
+                                <i className="feather icon-unlock auth-icon"></i>
                             </div>
-                            <h3 class="mb-4">Login</h3>
+                            <h3 className="mb-4">Login</h3>
                             <form onSubmit={handleSubmit}>
-                                <div class="input-group mb-3">
+                                <div className="input-group mb-3">
                                     <input 
                                         type="email" 
-                                        class="form-control" 
+                                        className="form-control" 
                                         placeholder="Email" 
                                         onChange={handleemail} 
                                         onBlur={handleemail} 
                                         required
                                     ></input>
                                 </div>
-                                <div class="input-group mb-4">
+                                <div className="input-group mb-4">
                                     <input 
                                         type="password" 
-                                        class="form-control" 
+                                        className="form-control" 
                                         placeholder="password" 
                                         onChange={handlePassword}
                                         onBlur={handlePassword}
@@ -84,21 +84,21 @@ const Login = ({login, loading, error,account}) => {
                                     ></input>
                                 </div>
                                 {(errorHandler?.dataAdded) ?
-                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <div className="alert alert-danger alert-dismissible fade show" role="alert">
                                         
                                     </div> : <div className="login-error">{errorHandler}</div>
                                 }
                                 {loading ? (
-                                    <button class="btn btn-primary shadow-2 mb-4 submit-button" disabled>
+                                    <button className="btn btn-primary shadow-2 mb-4 submit-button" disabled>
                                        <div className="animation">
                                             <LottieAnimation data={loader}/>
                                         </div>
                                     </button>
                                 ) : (
-                                    <button class="btn btn-primary shadow-2 mb-4 submit-button"><span>Login</span></button>
+                                    <button className="btn btn-primary shadow-2 mb-4 submit-button"><span>Login</span></button>
                                 )}
                                 
-                                <p class="mb-0 text-muted">Don’t have an account? <Link to="/Signup">Signup</Link></p>
+                                <p className="mb-0 text-muted">Don’t have an account? <Link to="/Signup">Signup</Link></p>
                             </form>
                         </div>
                     </div>

@@ -13,31 +13,31 @@ const Sidebar = ({togglemodal, logout}) => {
 
     return ( 
         <div className="sidebar">
-               <nav class="pcoded-navbar">
-                <div class="navbar-wrapper">
-                    <div class="navbar-brand header-logo">
-                        <a href="index.html" class="b-brand">
-                            <div class="b-bg">
-                                <i class="feather icon-trending-up"></i>
+               <nav className="pcoded-navbar">
+                <div className="navbar-wrapper">
+                    <div className="navbar-brand header-logo">
+                        <a href="index.html" className="b-brand">
+                            <div className="b-bg">
+                                <i className="feather icon-trending-up"></i>
                             </div>
-                            <span class="b-title">Datta Able</span>
+                            <span className="b-title">Datta Able</span>
                         </a>
-                        <a class="mobile-menu" id="mobile-collapse" href="javascript:"><span></span></a>
+                        <a className="mobile-menu" id="mobile-collapse" href="javascript:"><span></span></a>
                     </div>
-                    <div class="navbar-content scroll-div">
-                        <ul class="nav pcoded-inner-navbar">
-                            <li class="nav-item pcoded-menu-caption">
+                    <div className="navbar-content scroll-div">
+                        <ul className="nav pcoded-inner-navbar">
+                            <li className="nav-item pcoded-menu-caption">
                                 <label>Navigation</label>
                             </li>
-                            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item active">
-                                <a href="index.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
+                            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" className="nav-item active">
+                                <a href="index.html" className="nav-link "><span className="pcoded-micon"><i className="feather icon-home"></i></span><span className="pcoded-mtext">Dashboard</span></a>
                             </li>
-                            <li onClick={togglemodal} data-username="form elements advance componant validation masking wizard picker select" class="nav-item">
-                                <a class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Dispute Management</span></a>
+                            <li onClick={togglemodal} data-username="form elements advance componant validation masking wizard picker select" className="nav-item">
+                                <a className="nav-link "><span className="pcoded-micon"><i className="feather icon-file-text"></i></span><span className="pcoded-mtext">Dispute Management</span></a>
                             </li>
                             <div className="logout-button" onClick={handlelogout}>
-                                <li data-username="form elements advance componant validation masking wizard picker select" class="nav-item">
-                                    <a class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Log Out</span></a>
+                                <li data-username="form elements advance componant validation masking wizard picker select" className="nav-item">
+                                    <a className="nav-link "><span className="pcoded-micon"><i className="feather icon-file-text"></i></span><span className="pcoded-mtext">Log Out</span></a>
                                 </li>
                             </div>
                         </ul>

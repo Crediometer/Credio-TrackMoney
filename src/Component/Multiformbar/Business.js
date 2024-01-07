@@ -86,7 +86,7 @@ const Business = ({
       
     useEffect(()=>{
         setNameState({ ...nameState, ...{ profileURL: proImage, mermatURL: mermat, shareholdersAgreement: board } });
-    },[board, mermat, proImage])
+    },[board, mermat, proImage, nameState])
     const handleSubmit = async (e) => {
         e.preventDefault();
         // setNameState({ ...nameState, ...{ profileURL: proImage, mermatURL: mermat, shareholdersAgreement: board } });

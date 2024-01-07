@@ -67,14 +67,14 @@ const Dashboard = ({fetchtransaction, fetchstatement,fetchoverview,transaction, 
                         </div>
                     ): (
                         <div className="dashboard">
-                            <div class="pcoded-main-container">
-                                <div class="pcoded-wrapper">
-                                    <div class="pcoded-content">
-                                        <div class="pcoded-inner-content">
-                                            <div class="main-body">
-                                                <div class="page-wrapper">
+                            <div className="pcoded-main-container">
+                                <div className="pcoded-wrapper">
+                                    <div className="pcoded-content">
+                                        <div className="pcoded-inner-content">
+                                            <div className="main-body">
+                                                <div className="page-wrapper">
                                                     {/* <!-- [ Main Content ] start --> */}
-                                                    <div class="row">
+                                                    <div className="row">
                                                         <Card title="Account Balance" value={
                                                             <FormattedNumber
                                                             value={
@@ -106,7 +106,7 @@ const Dashboard = ({fetchtransaction, fetchstatement,fetchoverview,transaction, 
                                                         {/* <!--[ year  sales section ] end-->
                                                         <!--[ Recent Users ] start--> */}
                                                         <div className="transaction-outer">
-                                                            <div class="trans-header">
+                                                            <div className="trans-header">
                                                                 <h5>Transaction</h5>
                                                             </div>
                                                             <div className="trans-filter">
@@ -144,28 +144,28 @@ const Dashboard = ({fetchtransaction, fetchstatement,fetchoverview,transaction, 
                                                                     </select> */}
                                                                 </div>
                                                             </div>
-                                                            <div class="col-xl-16 col-md-12 m-b-30">
-                                                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                                                <li class="nav-item" onClick={handleSuccess}>
+                                                            <div className="col-xl-16 col-md-12 m-b-30">
+                                                            <ul className="nav nav-tabs" id="myTab" role="tablist">
+                                                                <li className="nav-item" onClick={handleSuccess}>
                                                                     <a className={show === 1 ? `nav-link active show`: 'nav-link'}  id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false">Successful</a>
                                                                 </li>
-                                                                <li class="nav-item" onClick={handleUnsuccess}>
+                                                                <li className="nav-item" onClick={handleUnsuccess}>
                                                                     <a  className={show === 2 ? `nav-link active show`: 'nav-link'}  id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">Unsuccessful</a>
                                                                 </li>
-                                                                <li class="nav-item" onClick={handleAll}>
+                                                                <li className="nav-item" onClick={handleAll}>
                                                                     <a className={show === 3 ? `nav-link active show`: 'nav-link'}  id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Withdrawal</a>
                                                                 </li>
                                                             </ul>
-                                                            <div class="tab-content" id="myTabContent">
+                                                            <div className="tab-content" id="myTabContent">
                                                                 <div className={show === 1 ? `tab-pane fade active show`: 'tab-pane fade'} id="home" role="tabpanel" aria-labelledby="home-tab">
-                                                                    <table class="table table-hover">
+                                                                    <table className="table table-hover">
                                                                         <thead>
                                                                             <tr>
                                                                                 <th>From</th>
                                                                                 <th>To</th>
                                                                                 <th>Amount</th>
                                                                                 <th>balance</th>
-                                                                                <th class="text-right"></th>
+                                                                                <th className="text-right"></th>
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -173,18 +173,18 @@ const Dashboard = ({fetchtransaction, fetchstatement,fetchoverview,transaction, 
                                                                                 return(
                                                                                     <tr>
                                                                                         <td>
-                                                                                            <h6 class="m-0"><img class="rounded-circle  m-r-10" style={{width:"40px"}} src={avatar2} alt="activity-user"></img>{transaction.from}</h6>
+                                                                                            <h6 className="m-0"><img className="rounded-circle  m-r-10" style={{width:"40px"}} src={avatar2} alt="activity-user"></img>{transaction.from}</h6>
                                                                                         </td>
                                                                                         <td>
-                                                                                            <h6 class="m-0">{transaction.referenceData.creditAccountName}</h6>
+                                                                                            <h6 className="m-0">{transaction.referenceData.creditAccountName}</h6>
                                                                                         </td>
                                                                                         <td>
-                                                                                            <h6 class="m-0">{transaction.amount}</h6>
+                                                                                            <h6 className="m-0">{transaction.amount}</h6>
                                                                                         </td>
                                                                                         <td>
-                                                                                            <h6 class="m-0 text-c-green">{transaction.balance}</h6>
+                                                                                            <h6 className="m-0 text-c-green">{transaction.balance}</h6>
                                                                                         </td>
-                                                                                        <td class="text-right"><i class="fas fa-circle text-c-green f-10"></i></td>
+                                                                                        <td className="text-right"><i className="fas fa-circle text-c-green f-10"></i></td>
                                                                                     </tr>
                                                                                 )
                                                                             })}
@@ -195,14 +195,14 @@ const Dashboard = ({fetchtransaction, fetchstatement,fetchoverview,transaction, 
 
                                                                 </div>
                                                                 <div className={show === 2 ? `tab-pane fade active show`: 'tab-pane fade'} id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                                                <table class="table table-hover">
+                                                                <table className="table table-hover">
                                                                         <thead>
                                                                             <tr>
                                                                                 <th>From</th>
                                                                                 <th>To</th>
                                                                                 <th>Amount</th>
                                                                                 <th>balance</th>
-                                                                                <th class="text-right"></th>
+                                                                                <th className="text-right"></th>
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -210,18 +210,18 @@ const Dashboard = ({fetchtransaction, fetchstatement,fetchoverview,transaction, 
                                                                                 return(
                                                                                     <tr>
                                                                                         <td>
-                                                                                            <h6 class="m-0"><img class="rounded-circle  m-r-10" style={{width:"40px"}} src={avatar2} alt="activity-user"></img>{transaction.from}</h6>
+                                                                                            <h6 className="m-0"><img className="rounded-circle  m-r-10" style={{width:"40px"}} src={avatar2} alt="activity-user"></img>{transaction.from}</h6>
                                                                                         </td>
                                                                                         <td>
-                                                                                            <h6 class="m-0">{transaction.referenceData.creditAccountName}</h6>
+                                                                                            <h6 className="m-0">{transaction.referenceData.creditAccountName}</h6>
                                                                                         </td>
                                                                                         <td>
-                                                                                            <h6 class="m-0">{transaction.amount}</h6>
+                                                                                            <h6 className="m-0">{transaction.amount}</h6>
                                                                                         </td>
                                                                                         <td>
-                                                                                            <h6 class="m-0 text-c-green">{transaction.balance}</h6>
+                                                                                            <h6 className="m-0 text-c-green">{transaction.balance}</h6>
                                                                                         </td>
-                                                                                        <td class="text-right"><i class="fas fa-circle text-c-green f-10"></i></td>
+                                                                                        <td className="text-right"><i className="fas fa-circle text-c-green f-10"></i></td>
                                                                                     </tr>
                                                                                 )
                                                                             })}
@@ -232,14 +232,14 @@ const Dashboard = ({fetchtransaction, fetchstatement,fetchoverview,transaction, 
 
                                                                 </div>
                                                                 <div className={show === 3 ? `tab-pane fade active show`: 'tab-pane fade'} id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                                                                <table class="table table-hover">
+                                                                <table className="table table-hover">
                                                                         <thead>
                                                                             <tr>
                                                                                 <th>From</th>
                                                                                 <th>To</th>
                                                                                 <th>Amount</th>
                                                                                 <th>balance</th>
-                                                                                <th class="text-right"></th>
+                                                                                <th className="text-right"></th>
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -247,18 +247,18 @@ const Dashboard = ({fetchtransaction, fetchstatement,fetchoverview,transaction, 
                                                                                 return(
                                                                                     <tr>
                                                                                         <td>
-                                                                                            <h6 class="m-0"><img class="rounded-circle  m-r-10" style={{width:"40px"}} src={avatar2} alt="activity-user"></img>{transaction.from}</h6>
+                                                                                            <h6 className="m-0"><img className="rounded-circle  m-r-10" style={{width:"40px"}} src={avatar2} alt="activity-user"></img>{transaction.from}</h6>
                                                                                         </td>
                                                                                         <td>
-                                                                                            <h6 class="m-0">{transaction.referenceData.creditAccountName}</h6>
+                                                                                            <h6 className="m-0">{transaction.referenceData.creditAccountName}</h6>
                                                                                         </td>
                                                                                         <td>
-                                                                                            <h6 class="m-0">{transaction.amount}</h6>
+                                                                                            <h6 className="m-0">{transaction.amount}</h6>
                                                                                         </td>
                                                                                         <td>
-                                                                                            <h6 class="m-0 text-c-green">{transaction.balance}</h6>
+                                                                                            <h6 className="m-0 text-c-green">{transaction.balance}</h6>
                                                                                         </td>
-                                                                                        <td class="text-right"><i class="fas fa-circle text-c-green f-10"></i></td>
+                                                                                        <td className="text-right"><i className="fas fa-circle text-c-green f-10"></i></td>
                                                                                     </tr>
                                                                                 )
                                                                             })}
