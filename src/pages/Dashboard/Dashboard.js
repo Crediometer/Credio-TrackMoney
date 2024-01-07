@@ -89,7 +89,7 @@ const Dashboard = ({fetchtransaction, fetchstatement,fetchoverview,transaction, 
                                                             value={
                                                                 overview.today
                                                             }
-                                                            style="currency"
+                                                            style={`currency`}
                                                             currency="NGN"
                                                         />
                                                         }/>
@@ -98,7 +98,7 @@ const Dashboard = ({fetchtransaction, fetchstatement,fetchoverview,transaction, 
                                                             value={
                                                                 overview.totalTransaction
                                                             }
-                                                            style="currency"
+                                                            style={`currency`}
                                                             currency="NGN"
                                                         />
                                                         }/>
