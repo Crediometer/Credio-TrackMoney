@@ -23,7 +23,7 @@ jobs:
         CI=false npm run build
     
     - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      uses: airvzxf/ftp-deployment-action@latest
       with:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
