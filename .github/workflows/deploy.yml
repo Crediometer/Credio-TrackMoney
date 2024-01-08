@@ -29,8 +29,8 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./build/
+        server-dir: /
         state-name: ftp-deploy-sync-state.json
-        dry-run: true
         exclude: |
           **/.git*
           **/.git*/**
