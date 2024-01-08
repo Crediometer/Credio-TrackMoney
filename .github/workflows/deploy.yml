@@ -23,15 +23,8 @@ jobs:
         CI=false npm run build
     
     - name: 📂 Sync files
-      uses: airvzxf/ftp-deployment-action@latest
+      uses: airvzxf/ftp-deployment-action@1.3.1
       with:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./build/
-        server-dir: /
-        exclude: |
-          **/.git*
-          **/.git*/**
-          **/node_modules/**
-          **/.**
