@@ -14,7 +14,6 @@ const DragandDrop = ({
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(false)
     const inputRef = useRef();
-
     const handleDragOver = (event) => {
         event.preventDefault();
     };
@@ -25,9 +24,7 @@ const DragandDrop = ({
     const handleSubmit = (event)=>{
         event.preventDefault();
         setFiles(event.target.files)
-        console.log(event.target.files[0])
         let data ={file:event.target.files[0]}
-        console.log(data)
         try{
             verifyprofileimg(data, ()=>{
                 setSuccess(true)
@@ -42,9 +39,7 @@ const DragandDrop = ({
     const handleDrop = (event) => {
         event.preventDefault();
         setFiles(event.dataTransfer.files)
-        console.log(event.dataTransfer.files[0])
         let data ={file:event.dataTransfer.files[0]}
-        console.log(data)
         try{
             verifyprofileimg(data, ()=>{
                 setSuccess(true)

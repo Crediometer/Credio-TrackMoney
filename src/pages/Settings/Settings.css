@@ -1,0 +1,50 @@
+.settings{
+    width: 100%;
+}
+.settings-top{
+    width: 100%;
+    padding: 0.3rem 1rem;
+    border-bottom: 2px solid rgb(28, 28, 28);
+}
+.settings-nav{
+
+}
+
+.settings-nav p{
+    color: black;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.settings-inner{
+    margin-top: 30px;
+}
+.settings-inner h3{
+    color: black;
+    font-size: 2rem;
+    font-weight: bold;
+}
+.settings-input{
+    margin-top: 20px;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    gap:  15px;
+    justify-content: space-between;
+}
+.settings-input input{
+    width: 80%;
+    border: 1px solid rgba(0, 0, 0, 0.623);
+    border-radius: 5px;
+    padding: 1rem;
+}
+.settings-input button{
+    width: 20%;
+    background-color: #B11226;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    font-family: "Poppins";
+    border-radius: 5px;
+    padding: 1rem;
+}

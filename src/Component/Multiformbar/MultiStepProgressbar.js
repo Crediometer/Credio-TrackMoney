@@ -7,7 +7,7 @@ const MultiStepProgressbar = (props) => {
     return ( 
         <ProgressBar
             percent={((props.step - 1) * 100)/ 2}
-            filledBackground="linear-gradient(to right, #038fcf, #04a9f5)"
+            filledBackground="linear-gradient(to right, #B11226, #FAF1F3)"
             unfilledBackground="#0000"
             height="2px"
         >
@@ -17,7 +17,7 @@ const MultiStepProgressbar = (props) => {
                     <div className={`step-number ${accomplished ? "completed" : ""}`}>
                         {accomplished ? (<FaCheck/>) : (<p>1</p>)}
                     </div>
-                    <p className={`step-name ${accomplished ? "completed" : ""}`}>personal<br></br>information </p>
+                    <p className={`step-name ${accomplished ? "completed" : ""}`}>Personal<br></br>Information </p>
                 </div>
             )}
             </Step>
@@ -27,7 +27,7 @@ const MultiStepProgressbar = (props) => {
                 <div className={`step-number ${accomplished ? "completed" : ""}`}>
                     {accomplished ? (<FaCheck/>) : (<p>2</p>)}  
                 </div>
-                <p className={`step-name ${accomplished ? "completed" : ""}`}>Business<br></br>information </p>
+                <p className={`step-name ${accomplished ? "completed" : ""}`}>Business<br></br>Information </p>
             </div>
             )}
             </Step>

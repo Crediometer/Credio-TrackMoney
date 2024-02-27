@@ -3,6 +3,7 @@ import Login from "./pages/Auth/Login";
 import Layout from "./Component/Layout/Layout";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Signup from "./pages/Auth/Signup";
+import Settings from "./pages/Settings/Settings";
 
 export default function Router() {
     const routes = useRoutes([
@@ -23,7 +24,7 @@ export default function Router() {
             element: <Layout/>,
             children: [
               { index: true, element: <Dashboard/> },
-            //   { path: 'location', element: <Location/> },
+              { path: 'settings', element: <Settings/> },
             ],
         },
     ]);

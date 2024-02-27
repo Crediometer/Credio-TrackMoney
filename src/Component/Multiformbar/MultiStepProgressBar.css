@@ -37,10 +37,10 @@
     color: rgba(32, 32, 32, 0.8);
 }
 .step-number.completed{
-    background-color: #04a9f5;
+    background-color: #B11226;
 }
 .step-name.completed{
-    color: #04a9f5;
+    color: #B11226;
 }
 .formtext{
     font-family: 'Open Sans';

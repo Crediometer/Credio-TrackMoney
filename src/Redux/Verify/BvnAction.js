@@ -88,6 +88,7 @@ export const verifyRC = (poststate, history, setErrorHandler) => {
             }
         }
         catch(error){
+            console.log(error)
             const errormsg = error.response.data.message
             dispatch(rcfaliure(errormsg))
             setErrorHandler({ hasError: true, message: error?.response?.data?.message });

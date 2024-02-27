@@ -17,7 +17,7 @@ const Layout = () => {
                 <Sidebar togglemodal={toggle}/>
             </div>
             <div className="layout-right">
-                <Navbar/>
+                {/* <Navbar/> */}
                 <div className="layout-main">
                     <Outlet/>
                 </div>

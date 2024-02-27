@@ -195,7 +195,8 @@ p.text-muted {
   border-radius: 0;
   -webkit-box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
           box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
-  border: none;
+  border-left: 2px solid #B11226;
+  border-radius: 10px;
   margin-bottom: 30px;
   -webkit-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
@@ -277,7 +278,9 @@ p.text-muted {
 .card .card-block,
 .card .card-body {
   padding: 30px 25px;
+  border-radius: 8px;
 }
+.ca
 .card.card-load {
   position: relative;
   overflow: hidden;
@@ -2490,7 +2493,7 @@ p.text-muted {
 }
 .pcoded-navbar .pcoded-inner-navbar > li.active:after, .pcoded-navbar .pcoded-inner-navbar > li.pcoded-trigger:after {
   content: "";
-  background-color: #1dc4e9;
+  background-color: #B11226;
   z-index: 1027;
   position: absolute;
   left: 0;
@@ -2826,7 +2829,8 @@ p.text-muted {
   clear: both;
   float: unset;
   right: 0;
-  margin-left: 264px;
+  width: 100%;
+  margin-left: 0px;
   min-height: 100vh;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
@@ -7464,7 +7468,7 @@ table.footable-paging-center > tfoot > tr.footable-paging > td {
   font-size: 30px;
 }
 .auth-wrapper .auth-icon:before {
-  background: linear-gradient(-135deg, #1de9b6 0%, #1dc4e9 100%);
+  background: #B11226;
   background-clip: text;
   text-fill-color: transparent;
   -webkit-background-clip: text;
@@ -7485,12 +7489,12 @@ table.footable-paging-center > tfoot > tr.footable-paging > td {
 .auth-wrapper .auth-bg .r:first-child {
   top: -100px;
   right: -100px;
-  background: linear-gradient(-135deg, #1de9b6 0%, #1dc4e9 100%);
+  background: linear-gradient(-135deg, #FAF1F3 0%, #E9CCD0 100%);
 }
 .auth-wrapper .auth-bg .r:last-child {
   left: -100px;
   bottom: -100px;
-  background: linear-gradient(-135deg, #899FD4 0%, #A389D4 100%);
+  background: linear-gradient(-135deg, #FAF1F3 0%, #B11226 100%);
 }
 .auth-wrapper .auth-bg .r.s {
   width: 20px;
@@ -7499,12 +7503,12 @@ table.footable-paging-center > tfoot > tr.footable-paging > td {
 .auth-wrapper .auth-bg .r.s:nth-child(2) {
   top: 150px;
   right: -150px;
-  background: #04a9f5;
+  background: #B11226;
 }
 .auth-wrapper .auth-bg .r.s:nth-child(3) {
   left: -150px;
   bottom: 150px;
-  background: #1de9b6;
+  background: #E9CCD0;
 }
 .auth-wrapper .auth-bg .r:nth-child(odd) {
   -webkit-animation: floating 7s infinite;
@@ -7739,23 +7743,23 @@ a.btn-theme.active {
 /* Alternate buttons */
 .btn-primary {
   color: #fff;
-  background-color: #04a9f5;
-  border-color: #04a9f5;
+  background-color: #B11226;
+  border-color: #B11226;
 }
 .btn-primary:hover {
   color: #fff;
-  background-color: #038fcf;
-  border-color: #0386c3;
+  background-color: #E9CCD0;
+  border-color: #E9CCD0;
 }
 .btn-primary.disabled, .btn-primary:disabled {
   color: #fff;
-  background-color: #04a9f5;
-  border-color: #04a9f5;
+  background-color: #B11226;
+  border-color: #B11226;
 }
 .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
   color: #fff;
-  background-color: #0386c3;
-  border-color: #037eb6;
+  background-color: #B11226;
+  border-color: #B11226;
 }
 
 .btn-secondary {

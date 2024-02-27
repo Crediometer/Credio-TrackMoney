@@ -15,6 +15,7 @@ import { postpersonal } from "../../Redux/SignUp/PersonalAction";
 import Errormodal from "../modal/Errormodal";
 import LottieAnimation from '../../Lotties';
 import loader from '../../assets/loading.json'
+import { Link } from "react-router-dom";
 // import { postpersonal } from '../../Redux/Activate/PersonalAction';
 // import Errormodal from "../Modal/Errormodal";
 const Personal = ({next, personal, error, loading}) => {
@@ -40,7 +41,7 @@ const Personal = ({next, personal, error, loading}) => {
             const converted = `+234${phoneNumber.slice(1)}`;
             setConvertedNumber(converted);
         }
-        setNameState({ ...nameState, ...{ phoneNumber: convertedNumber } });
+        setNameState({ ...nameState, ...{ phoneNumber: phoneNumber } });
     };
     const handleEmail = (e) => {
         const value = e.target.value;
@@ -112,7 +113,7 @@ const Personal = ({next, personal, error, loading}) => {
                         className={styles2.fieldinput}
                         type="text"
                         placeholder="Enter phone number"
-                        maxLength={11}
+                        
                         onBlur={handleNumber}
                         onChange={handleNumber}
                         required
@@ -191,7 +192,7 @@ const Personal = ({next, personal, error, loading}) => {
                     <button className="btn btn-primary shadow-2 mb-4 text-center submit-button"><span>Save</span></button>
                 )}         
             </div>
-            
+            <p className="mb-0 text-muted">I Already Hava an Account? <Link to="/">Signin</Link></p>
             {showerror && (<Errormodal error={error} togglemodal={togglemodal}/>)}
         </form>
     );

@@ -36,7 +36,7 @@ export const postpersonal = (poststate, history, setErrorHandler) => {
         }
         catch(error){
             console.log(error)
-            const errormsg = error.response.data.errors[0].msg
+            const errormsg = error.response.data.errors.msg
             dispatch(personalfaliure(errormsg))
             setErrorHandler({ hasError: true, message: error?.response?.data?.message });
         }
